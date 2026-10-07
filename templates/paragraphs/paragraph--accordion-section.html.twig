@@ -1,0 +1,55 @@
+{% set accordion_title = paragraph.field_title.value ?? '' %}
+
+{% set has_child = content.field_child_accordion|render|striptags|trim %}
+{% set has_direct_detail = content.field_accordion_detail_section_l|render|striptags|trim %}
+
+{% if accordion_title or has_child or has_direct_detail %}
+
+  {% set accordion_id = 'accordion-' ~ paragraph.id.value %}
+
+  <div class="accordion gst-main-accordion mb-3" id="{{ accordion_id }}">
+
+    <div class="accordion-item">
+
+      {% if accordion_title %}
+        <h4 class="accordion-header panel-title">
+          <a
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapse-{{ paragraph.id.value }}"
+            aria-expanded="false"
+          >
+            {{ accordion_title }}
+        </a>
+
+        </h4>
+      {% endif %}
+
+      <div
+        id="collapse-{{ paragraph.id.value }}"
+        class="accordion-collapse collapse"
+        data-bs-parent="#{{ accordion_id }}"
+      >
+
+        <div class="accordion-body">
+
+          {% if has_child %}
+            {{ content.field_child_accordion }}
+          {% endif %}
+
+          {% if has_direct_detail %}
+            <div class="gst-direct-detail-sections">
+              {{ content.field_accordion_detail_section_l }}
+            </div>
+          {% endif %}
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+{% endif %}

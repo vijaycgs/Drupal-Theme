@@ -1,0 +1,62 @@
+{#
+/**
+ * @file
+ * Footer Menu Template
+ * File:
+ * menu--footer.html.twig
+ */
+#}
+
+<nav class="footer-menu-wrapper"
+     aria-label="{{ 'Footer navigation'|t }}">
+
+  <ul class="clearfix nav flex-row"
+      data-component-id="bootstrap:menu_columns">
+
+    {% for item in items %}
+
+      <li class="col-lg-3 col-md-3 col-sm-3 col-xs-12 no-mobile
+        {{ item.below ? 'menu-item--expanded' }}
+      ">
+
+        <a href="{{ item.url }}"
+           class="footer-level-1-menu nav-link{{ item.in_active_trail ? ' is-active' }}"
+           {% if item.in_active_trail %}
+             aria-current="page"
+           {% endif %}
+        >
+          {{ item.title }}
+        </a>
+
+        {% if item.below %}
+
+          <ul class="flex-column">
+
+            {% for child in item.below %}
+
+              <li class="nav-item">
+
+                <a href="{{ child.url }}"
+                   class="nav-link{{ child.in_active_trail ? ' is-active' }}"
+                   {% if child.in_active_trail %}
+                     aria-current="page"
+                   {% endif %}
+                >
+                  {{ child.title }}
+                </a>
+
+              </li>
+
+            {% endfor %}
+
+          </ul>
+
+        {% endif %}
+
+      </li>
+
+    {% endfor %}
+
+  </ul>
+
+</nav>

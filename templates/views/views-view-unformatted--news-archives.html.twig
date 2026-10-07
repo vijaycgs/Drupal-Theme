@@ -1,0 +1,71 @@
+{% set current_month = '' %}
+
+<div class="accordion news-archives-accordion" id="newsAccordion">
+
+  {% for row in rows %}
+    {% set node = row.content['#row']._entity %}
+
+    {% if node %}
+      {% set month = node.field_news_date.value|date('F') %}
+      {% set month_id = month|lower|replace({' ':'-'}) %}
+
+      {% if month != current_month %}
+
+        {% if current_month != '' %}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+
+        {% set current_month = month %}
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="heading-{{ month_id }}">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapse-{{ month_id }}"
+              aria-expanded="false"
+              aria-controls="collapse-{{ month_id }}"
+            >
+              {{ month }}
+            </button>
+          </h2>
+
+          <div
+            id="collapse-{{ month_id }}"
+            class="accordion-collapse collapse"
+            aria-labelledby="heading-{{ month_id }}"
+            data-bs-parent="#newsAccordion"
+          >
+            <div class="accordion-body">
+
+      {% endif %}
+
+              <a href="{{ path('entity.node.canonical', {'node': node.id()}) }}" class="news-detail">
+                <div class="news-detail__content news-wrapper">
+                    <h3 class="news-header"> {{ node.label() }} </h3>
+                    <div class="news-desc">
+                        <p>{{ node.field_news_description.value|striptags|slice(0, 300) }}...</p>
+                    </div>
+                    <div class="news-date-and-type">
+                        <p class="news-date">{{ node.field_news_date.value|date('M jS, Y') }}
+                          </p>
+                         <span class="tag-btn">
+                              {{ node.field_news_type.entity.name.value }}
+                            </span>
+                      </div>
+                </div>
+              </a>
+
+      {% if loop.last %}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+    {% endif %}
+  {% endfor %}
+
+</div>

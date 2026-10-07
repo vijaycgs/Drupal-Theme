@@ -1,0 +1,7 @@
+indbase.settings:
+  type: config_object
+  label: 'IND Base settings'
+  mapping:
+    example_setting:
+      type: string
+      label: 'Example setting'

@@ -1,0 +1,27 @@
+@use 'colors';
+
+.layout {
+  &--60-40 {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__region {
+    &--first {
+      flex: 0 0 60%;
+    }
+
+    &--second {
+      flex: 0 0 40%;
+    }
+  }
+  @media (max-width: 768px) {
+    &--60-40 {
+      flex-direction: column;
+    }
+
+    &__region--first, &__region--second {
+      flex: 0 0 100%;
+    }
+  }
+}

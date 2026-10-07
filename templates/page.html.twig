@@ -1,0 +1,89 @@
+<div class="layout-container">
+  <div id="downloadModal" class="download-modal">
+    <div class="download-modal-content">
+
+      <div class="modal-icon">!</div>
+
+      <h2>Information</h2>
+
+      <p id="modalDescription">Are you sure you want to download this utility?</p>
+
+      <div class="modal-buttons">
+        <button id="cancelDownload" type="button" class="btn btn-default">
+          Cancel
+        </button>
+
+        <a href="#" id="proceedDownload" class="btn btn-primary">
+          Proceed
+        </a>
+      </div>
+
+    </div>
+  </div>
+  <div id="page-loader">
+    <div class="dot-loader">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <header>
+    {{ page.header }}
+  </header>
+
+  {% if page.primary_menu %}
+      <nav class="primary-menu">
+        {{ page.primary_menu }}
+      </nav>
+    {% endif %}
+
+  {% if page.highlighted %}
+    <div class="highlighted container">
+      {{ page.highlighted }}
+    </div>
+  {% endif %}
+
+  {% if page.breadcrumb %}
+      <div class="breadcrumb-wrapper container">
+        {{ page.breadcrumb }}
+      </div>
+    {% endif %}
+
+  <main class="container" id="main-content">
+    <div class="row">
+      {% if page.sidebar_first %}
+        <aside class="col-md-3 col-sm-12" id="sidebar-first" role="complementary">
+          {{ page.sidebar_first }}
+        </aside>
+      {% endif %}
+      <div class="content-wrapper bg-white padding-15 {{ page.sidebar_first ? 'col-md-9 col-sm-12' : 'col-sm-12' }}">
+        {{ page.content }}
+      </div>
+    </div>
+  </main>
+
+  {% if page.footer %}
+  <div class="footer-menu-wrapper">
+    <button class="footer-toggle"
+          aria-expanded="true"
+          aria-controls="footerMenu">
+    <span class="visually-hidden">Toggle footer menu</span>
+    </button>
+    <footer class="custom-footer is-open" id="footerMenu">
+      {{ page.footer }}
+    </footer>
+  </div>
+  {% endif %}
+
+  {% if page.copyright_footer %}
+    <div class="copy-right-sec gst-footer-bottom-bar">
+      {{ page.copyright_footer }}
+    </div>
+  {% endif %}
+
+  <button id="scrollTopBtn" aria-label="Scroll to top">
+    <span></span>
+    <p>{{ 'Top'|t }}</p>
+  </button>
+</div>

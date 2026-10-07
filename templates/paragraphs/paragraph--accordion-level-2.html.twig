@@ -1,0 +1,49 @@
+{% set child_title = paragraph.field_title.value ?? '' %}
+
+{% set has_detail = content.field_detail_section|render|striptags|trim %}
+
+{% if child_title or has_detail %}
+
+  {% set child_id = 'child-' ~ paragraph.id.value %}
+
+  <div class="accordion gst-child-accordion" id="{{ child_id }}">
+
+    <div class="accordion-item">
+
+      {% if child_title %}
+        <h2 class="accordion-header">
+
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#child-collapse-{{ paragraph.id.value }}"
+            aria-expanded="false"
+          >
+            {{ child_title }}
+          </button>
+
+        </h2>
+      {% endif %}
+
+      <div
+        id="child-collapse-{{ paragraph.id.value }}"
+        class="accordion-collapse collapse"
+        data-bs-parent="#{{ child_id }}"
+      >
+
+        <div class="accordion-body">
+
+          {% if has_detail %}
+            {{ content.field_detail_section }}
+          {% endif %}
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+{% endif %}

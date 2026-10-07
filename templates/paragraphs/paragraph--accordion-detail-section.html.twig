@@ -1,0 +1,46 @@
+<div class="gst-detail-card row align-items-start">
+
+  {# LEFT SIDE #}
+
+  {% if content.field_video_url is not empty %}
+  <div class="d-flex gst-video-section  col-sm-6 col-xs-12 ">
+
+    {% if content.field_video_icon %}
+      <a class="gst-video-icon col-sm-2 col-xs-3" href="{{ content.field_video_url.0['#url'] }}" target="_blank" rel="noopener noreferrer">
+        {{ content.field_video_icon }}
+      </a>
+    {% endif %}
+
+    {% if content.field_video_url %}
+      <p class="gst-video-duration col-sm-10 col-xs-9"> <strong>
+        {{ content.field_video_url.0['#title'] }} </strong>
+      </p>
+    {% endif %}
+
+  </div>
+  {% endif %}
+
+  {# RIGHT SIDE #}
+  <div class="col-md-12 gst-content-section">
+
+    {% if content.field_accordion_description %}
+      <h4 class="gst-description">
+        {{ content.field_accordion_description }}
+      </h4>
+    {% endif %}
+    <div class="gst-links mt-2 d-flex">
+      {% for item in content.field_document %}
+        {% if item['#url'] is defined %}
+          <a class="gst-doc col-sm-2 col-xs-5"
+            href="{{ item['#url'] }}"
+            target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-arrow-circle-right"></i>
+            {{ item['#title'] }}
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+  </div>
+
+</div>

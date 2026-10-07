@@ -1,0 +1,13 @@
+two_column_60_40:
+  label: 'Two Column 60/40'
+  category: 'IND Layouts'
+  template: layouts/two-column-60-40
+  library: indbase/layout_styles
+  default_region: first
+  icon_map:
+    - [first, second]
+  regions:
+    first:
+      label: First
+    second:
+      label: Second

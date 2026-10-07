@@ -1,0 +1,17 @@
+name: IND Base
+type: theme
+description: Custom IND drupal Theme
+core_version_requirement: ^10 || ^11
+base theme: bootstrap
+
+libraries:
+  - indbase/global-styling
+
+regions:
+  header: Header
+  primary_menu: Primary Menu
+  breadcrumb: Breadcrumb
+  content: Content
+  sidebar_first: Sidebar First
+  footer: Footer
+  copyright_footer: Copyright Footer

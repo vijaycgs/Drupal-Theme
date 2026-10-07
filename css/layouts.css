@@ -1,0 +1,18 @@
+.layout--60-40 {
+  display: flex;
+  gap: 20px;
+}
+.layout__region--first {
+  flex: 0 0 60%;
+}
+.layout__region--second {
+  flex: 0 0 40%;
+}
+@media (max-width: 768px) {
+  .layout--60-40 {
+    flex-direction: column;
+  }
+  .layout__region--first, .layout__region--second {
+    flex: 0 0 100%;
+  }
+}

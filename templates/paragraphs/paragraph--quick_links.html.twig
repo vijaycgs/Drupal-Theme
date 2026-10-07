@@ -1,0 +1,11 @@
+<div class="quick-links-list">
+  <!--ul-->
+    {% for item in paragraph.field_links %}
+      <!--li-->
+        <a href="{{ item.url }}" aria-label="{{ item.title }}" target="_blank" rel="noopener noreferrer">
+          {{ item.title }}
+        <i class="fa fa-external-link-square"></i> </a>
+      <!--/li-->
+    {% endfor %}
+  <!--/ul-->
+</div>

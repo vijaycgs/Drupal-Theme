@@ -1,0 +1,37 @@
+<article class="content-panel">
+  <div class="padding-0-15">
+
+      <div class="news-title">
+        {{ label  }}
+      </div>
+
+
+    {% if content.field_news_date %}
+      <div>
+        {{ content.field_news_date }}
+      </div>
+    {% endif %}
+
+    {% if content.field_news_type %}
+      <div>
+        {{ content.field_news_type }}
+      </div>
+    {% endif %}
+
+    {% if content.field_news_description %}
+      <div>
+        {{ content.field_news_description }}
+      </div>
+    {% endif %}
+
+    <div class="pull-right">
+      <button onclick="history.back();" class="btn btn-default">
+        BACK
+      </button>
+      <button onclick="window.print();" class="btn btn-primary">
+        PRINT
+      </button>
+    </div>
+  </div>
+
+</article>

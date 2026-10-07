@@ -1,0 +1,18 @@
+{% set url = paragraph.field_url_link.0.url %}
+    {% if url %}
+<div class="knowledge-row">
+
+
+    <a href="{{ url }}" class="knowledge-card-link col-sm-5 knowledge-container knowledge-blue-small d-flex">
+        <i class="{{ paragraph.field_gst_row_icon_class.value }}"></i>
+
+            <div class="pad-l-10">
+                {{ paragraph.field_url_link.title }}
+            </div>
+    </a>
+    <div class="col-sm-7">
+       {{ content.field_row_description }}
+    </div>
+
+</div>
+{% endif %}

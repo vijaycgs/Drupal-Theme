@@ -1,0 +1,79 @@
+{#
+Available fields:
+{{ fields.title.content }}
+{{ fields.field_media_oembed_video.content }}
+{{ fields.field_video.content }}
+{{ fields.field_video_1.content }}
+{{ fields.field_uploaded_on.content }}
+#}
+<pre>{{ fields.field_media_oembed_video.content }}</pre>
+<div class="video-card"> {{ fields.field_media_oembed_video.content }}
+  <a href="{{ fields.field_media_oembed_video.content|striptags|trim }}"
+     target="_blank"
+     rel="noopener noreferrer"
+     class="video-thumbnail">
+
+    {{ fields.field_video.content }}
+  </a>
+
+  <div class="video-content">
+
+    <h3 class="video-title">
+      <a href="{{ fields.field_media_oembed_video.url|striptags|trim }}"
+         target="_blank"
+         rel="noopener noreferrer">
+        {{ fields.title.content }}
+      </a>
+    </h3>
+
+    <div class="video-date">
+      Uploaded On:
+      {{ fields.field_uploaded_on.content }}
+    </div>
+
+  </div>
+</div>
+
+
+<style>
+    .video-card {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    border: 1px solid #cfd8e3;
+    border-radius: 10px;
+    align-items: flex-start;
+}
+
+.video-thumbnail img {
+    width: 170px;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+}
+
+.video-content {
+    flex: 1;
+}
+
+.video-title {
+    margin: 0 0 12px;
+    font-size: 30px;
+    line-height: 1.4;
+}
+
+.video-title a {
+    color: #1e4f9f;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.video-title a:hover {
+    text-decoration: underline;
+}
+
+.video-date {
+    font-size: 15px;
+    color: #333;
+}
+</style>

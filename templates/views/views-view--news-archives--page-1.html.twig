@@ -1,0 +1,33 @@
+
+{#
+  Template: views-view--news-archives--page-1.html.twig
+  Overrides the News Archives view layout
+#}
+
+<div class="news-archives-wrapper content-news-and-updates">
+
+  <div class="view-header">
+      {% if title %}
+        <h1 class="page-title">{{ title }}</h1>
+      {% endif %}
+
+      {{ header }}
+    </div>
+    <hr class="hrline">
+    {% if exposed %}
+      <div class="view-filters">{{ exposed }}</div>
+    {% endif %}
+
+  <div class="news-archives__layout row">
+    {# LEFT SIDEBAR: Year Navigation #}
+    <aside class="news-archives__years col-sm-3 col-xs-4">
+      {{ drupal_view('news_archive_years', 'block_1') }}
+    </aside>
+
+    {# RIGHT SIDE: Month Accordion Content #}
+    <main class="news-archives__content col-sm-9 col-xs-8">
+      {{ rows }}
+    </main>
+
+  </div>
+</div>

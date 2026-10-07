@@ -1,0 +1,87 @@
+{#
+/**
+ * @file
+ * IND Main Navigation - Click L1, Hover L2
+ */
+#}
+
+<nav class="main-navigation container" aria-label="{{ 'Main navigation'|t }}">
+  <ul class="main-menu level-0" role="menubar">
+
+    {% for item in items %}
+      {% set level0_index = loop.index %}
+      {% set item_classes = [
+        'menu-item',
+        item.in_active_trail ? 'active-trail',
+        item.below ? 'menu-item--expanded',
+      ] %}
+
+      <li class="{{ item_classes|join(' ') }}" role="none" data-index="{{ level0_index }}">
+
+        <a href="{{ item.url }}"
+           class="menu-link level-0-link {% if item.below %}has-dropdown{% endif %}"
+           role="menuitem"
+           {% if item.below %}
+             aria-haspopup="true"
+             aria-expanded="false"
+             data-toggle="mega"
+           {% endif %}
+           {% if item.in_active_trail %}aria-current="page"{% endif %}>
+          {{ item.title }}
+          {% if item.below %}<span class="arrow" aria-hidden="true">▾</span>{% endif %}
+        </a>
+
+        {# ---- Level 1 Mega Panel (click triggered) ---- #}
+        {% if item.below %}
+          <div class="mega-panel" id="mega-{{ level0_index }}" hidden>
+
+            <ul class="level-1-tabs" role="tablist">
+              {% for child in item.below %}
+                {% set level1_index = loop.index %}
+                <li class="level-1-tab {% if child.below %}has-children{% endif %}"
+                    role="none"
+                    data-tab="{{ level0_index }}-{{ level1_index }}">
+
+                  <a href="{{ child.url }}"
+                     class="level-1-link"
+                     role="menuitem"
+                     {% if child.below %}
+                       aria-haspopup="true"
+                       data-parent="{{ level0_index }}"
+                       data-child="{{ level0_index }}-{{ level1_index }}"
+                     {% endif %}>
+                    {{ child.title }}
+                  </a>
+
+                  {# ---- Level 2 Panel (hover triggered) ---- #}
+                  {% if child.below %}
+                    <div class="level-2-panel"
+                         id="level2-{{ level0_index }}-{{ level1_index }}"
+                         role="region"
+                         aria-label="{{ child.title }} submenu">
+                      <ul class="level-2-grid">
+                        {% for grandchild in child.below %}
+                          <li>
+                            <a href="{{ grandchild.url }}"
+                               class="level-2-link"
+                               role="menuitem">
+                              {{ grandchild.title }}
+                            </a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                  {% endif %}
+
+                </li>
+              {% endfor %}
+            </ul>
+
+          </div>
+        {% endif %}
+
+      </li>
+    {% endfor %}
+
+  </ul>
+</nav>

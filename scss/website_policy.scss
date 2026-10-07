@@ -1,0 +1,76 @@
+@use 'fonts';
+@use 'colors';
+
+.policy {
+  &-page {
+    padding: 0 20px;
+  }
+
+  &-left {
+    border: 2px solid colors.$border;
+    border-radius: 6px;
+    font: fonts.$preset-regular-1-499rem-sans;
+    height: max-content;
+  }
+
+  &-right {
+    padding: 20px;
+    width: 100%;
+    overflow-y: auto;
+    border: 1px solid colors.$border;
+    border-radius: 6px;
+    display: inline-flex;
+    font: fonts.$preset-regular-1-499rem-sans;
+    line-height: 1.6;
+    margin-top: 20px;
+  }
+
+  &-link {
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+    border: 0;
+    background: colors.$white;
+    border-bottom: 1px solid colors.$border;
+    text-align: left;
+
+    &:hover {
+      color: colors.$color-076bcf;
+    }
+
+    &.active {
+      background: colors.$surface-blue !important;
+    }
+  }
+
+  &-item {
+    border-bottom: 1px solid colors.$border;
+
+    &:has(.active) {
+      color: colors.$color-076bcf;
+      border-bottom: 3px solid colors.$color-076bcf;
+      border: 3px solid colors.$color-076bcf;
+      background: colors.$surface-blue !important;
+    }
+  }
+
+  &-contents {
+    display: none;
+  }
+  @media screen and (min-width: 767px) {
+    &-content {
+      display: flex;
+      margin-top: 10px;
+    }
+
+    &-left {
+      width: 250px;
+    }
+
+    &-right {
+      width: 75%;
+      margin-left: 20px;
+      margin-top: 0;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{# Custom template for News & Updates view (page_1)
+   This wraps the default view output and attaches the theme styling.
+#}
+{% do attach_library('indbase/global-styling') %}
+<div class="">
+  <div class="content-news-and-updates">
+    {# Combine title and view header so they can be aligned left/right via CSS #}
+    <div class="view-header">
+      {% if title %}
+        <h1 class="page-title">{{ title }}</h1>
+      {% endif %}
+
+      {{ header }}
+    </div>
+    <hr class="hrline">
+    {% if exposed %}
+      <div class="view-filters">{{ exposed }}</div>
+    {% endif %}
+
+    <div class="view-content row">
+      {{ rows }}
+      {{ empty }}
+    </div>
+
+    {{ pager }}
+    {{ footer }}
+  </div>
+</div>

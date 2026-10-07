@@ -1,0 +1,21 @@
+{{ attach_library('indbase/website-policies') }}
+<div class="policy-item">
+
+  <button
+    type="button"
+    class="policy-link"
+    data-policy="policy-{{ fields.nid.content|striptags|trim }}">
+    {{ fields.title.content }}
+  </button>
+
+  <div
+    id="policy-{{ fields.nid.content|striptags|trim }}"
+    class="policy-contents">
+
+    <h1>{{ fields.title.content }}</h1>
+     <hr class="hrline">
+    {{ fields.body.content }}
+
+  </div>
+
+</div>

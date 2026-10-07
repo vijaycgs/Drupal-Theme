@@ -1,0 +1,33 @@
+
+<div class="knowledge-portal-page">
+
+     <div class="knowledge-portal-wrapper">
+
+      <h4 class="knowledge-portal-title">
+        {{ label }}
+      </h4>
+
+       {% if content.field_intro_description %}
+        <div class="knowledge-portal-intro-description">
+          {{ content.field_intro_description }}
+        </div>
+      {% endif %}
+
+      {% if content.field_gst_knowledge_portal_row %}
+        <div class="gst-knowledge-rows mt-5">
+          {{ content.field_gst_knowledge_portal_row }}
+        </div>
+
+      {% if content.field_sections %}
+        <div class="knowledge-portal-content">
+          {{ content.field_sections }}
+        </div>
+      {% endif %}
+
+      {% endif %}
+
+    </div>
+
+  <!--/div-->
+
+</div>

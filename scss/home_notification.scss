@@ -1,0 +1,82 @@
+@use 'fonts';
+@use 'colors';
+
+.marquee {
+  &-wrap {
+    overflow: hidden;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    color: colors.$notification-text;
+  }
+
+  &-track {
+    display: flex;
+    white-space: nowrap;
+    animation: scroll-left 30s linear infinite;
+    will-change: transform;
+
+    &:hover {
+      // Pause scrolling while the pointer is over the track.
+      animation-play-state: paused;
+    }
+  }
+
+  &-sep {
+    padding: 0 12px;
+    color: colors.$color-999999;
+  }
+}
+
+@keyframes scroll-left {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    // The content is duplicated, so move by half its width.
+    transform: translateX(-50%);
+  }
+}
+
+.notification {
+  &-item {
+    display: inline-flex;
+    align-items: center;
+    font-size: fonts.$size-12px;
+    padding: 0 8px;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.block {
+  &-views {
+    &-blockhome {
+      &-notification {
+        &-bar {
+          &-block {
+            &-1 {
+              background-color: colors.$surface-warning;
+              position: relative;
+              width: 98vw;
+              left: 50%;
+              transform: translateX(-50%);
+              overflow: hidden;
+              height: 25px;
+
+              .view-content {
+                &.row {
+                  display: flex;
+                  flex-wrap: nowrap;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

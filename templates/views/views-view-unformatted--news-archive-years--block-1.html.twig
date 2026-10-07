@@ -1,0 +1,21 @@
+{% set current_path = path('<current>') %}
+
+{% set years = [] %}
+
+<ul class="year-list">
+{% for row in rows %}
+
+  {% set year = row.content|render|striptags|trim %}
+
+  {% if year not in years %}
+    {% set years = years|merge([year]) %}
+
+    <li class="year-list__item {% if '/news-and-updates/archives/' ~ year == current_path %}active{% endif %}">
+      <a href="/news-and-updates/archives/{{ year }}">
+        {{ year }}
+      </a>
+    </li>
+  {% endif %}
+
+{% endfor %}
+</ul>

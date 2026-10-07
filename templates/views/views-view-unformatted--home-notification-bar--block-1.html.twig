@@ -1,0 +1,17 @@
+{{ attach_library('indbase/fontawesome') }}
+{{ attach_library('indbase/home-notification') }}
+<i style="padding-left: 18px;margin: 4px 10px 0 20px; color: #D80101;width: 20px;" class="fa fa-bell" aria-hidden="true"></i>
+<div class="marquee-wrap">
+  <div class="marquee-track">
+
+    {# Render items twice for seamless infinite loop #}
+    {% for i in 1..2 %}
+      {% for row in rows %}
+        <span class="notification-item">
+          {{ row.content }}
+        </span>
+        <span class="marquee-sep">|</span>
+      {% endfor %}
+    {% endfor %}
+  </div>
+</div>

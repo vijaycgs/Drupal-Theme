@@ -1,0 +1,5 @@
+node_modules/
+*.css.map
+/playwright-report/
+/test-results/
+/playwright/.auth/
